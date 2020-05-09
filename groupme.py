@@ -1,23 +1,18 @@
 import os
 from dotenv import load_dotenv
-import requests
 import json
+import requests
 from datetime import datetime, timezone
 
+# load environment variables and jsons
 load_dotenv()
 API_TOKEN = os.environ.get("GROUPME_ACCESS_TOKEN")
-GROUP_ID = {
-    "dclub": "45914225",
-    "glozz": "45763137",
-}
-USER_ID = {
-    "aidan": "43418465",
-    "ben": "62752724",
-    "dubem": "43405903",
-    "lucas": "49904547",
-    "nate": "26134002",
-    "dbot": "785625",
-}
+with open("ids.json") as f:
+    j = json.load(f)
+    GROUP_ID = j["GROUP_ID"]
+    USER_ID = j["USER_ID"]
+
+# global variables
 DCLUB = [USER_ID["aidan"], USER_ID["ben"], USER_ID["dubem"], USER_ID["lucas"], USER_ID["nate"]]
 DBOT = USER_ID["dbot"]
 
